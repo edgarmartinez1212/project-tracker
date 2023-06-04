@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -22,15 +23,25 @@
     </header>
 
     <div class="container">
-        <div class="row">
+        <div class="column">
             <!-- instruction card -->
-            <div class="col-12 col-md-3 col-lg-4 border border-5">
-                instruction card
+            <div class="col-8 border border-5">
+                <div>Click on the Add Project button to add a new project! You can delete a project by clicking on the
+                    delete button.</div>
             </div>
 
             <!-- project info table -->
-            <div class="col-12 col-md-9 col-lg-8 border border-5">
-                project info table
+            <div class="col-12 col-md-12 col-lg-12 border border-5" id="project-container">
+                <div>Projects</div>
+                <div class="row">
+                    <div class="col">Title</div>
+                    <div class="col">Type</div>
+                    <div class="col">Date Completed</div>
+                    <div class="col">Description</div>
+                    <div class="col"></div>
+                    <div id="project-table">
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -51,7 +62,7 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="project-name" placeholder="Project Name">
+                                <input type="text" class="form-control" id="project-name" placeholder="Project Title">
                             </div>
                             <select class="form-select mb-3" name="" id="project-type">
                                 <option selected disabled>Type of project</option>

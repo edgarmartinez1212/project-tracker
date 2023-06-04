@@ -14,13 +14,17 @@ function setTime() {
   }, 1000);
 }
 
-function clearModal(){
-    projectNameEl.text('');
-    projectNameEl.text('');
-    projectNameEl.text('');
-    projectNameEl.text('');
+// not functional
+function clearModal() {
+  projectNameEl.text("");
+  projectTypeEl.text("");
+  projectDateEl.text("");
+  projectDescEl.text("");
 }
 
+// FIX
+// look for a way to clear and hide modal
+// updates projects table without refreshing page
 function handleFormSubmit(event) {
   let newProject = {
     name: projectNameEl.val(),
@@ -34,7 +38,7 @@ function handleFormSubmit(event) {
 
   localStorage.setItem("projects", JSON.stringify(projects));
 
-  clearModal();
+  location.reload();
 }
 
 function setUpLocalStorage() {
@@ -43,7 +47,47 @@ function setUpLocalStorage() {
   }
 }
 
-setTime();
-setUpLocalStorage();
+function displayProjects() {
+  let projectTableEl = $("#project-table");
+  projectTableEl.children().remove();
+  let projects = JSON.parse(localStorage.getItem("projects"));
 
+  projects.forEach((project, i) => {
+    let rowEl = $("<form>");
+    let keys = Object.keys(project);
+
+    keys.forEach((key) => {
+      let colEl = $("<div>");
+      colEl.text(project[key]);
+      colEl.addClass("col");
+      rowEl.append(colEl);
+    });
+    rowEl.addClass("row");
+    let removeBtn = $("<button>");
+    removeBtn.addClass("col button");
+    removeBtn.text("Remove");
+    removeBtn.attr("id", i);
+    removeBtn.on("click", removeProject);
+    rowEl.append(removeBtn);
+    projectTableEl.append(rowEl);
+  });
+}
+
+// need to remove element
+function removeProject(event) {
+  event.preventDefault();
+  let toRemove = event.target.id;
+  let projects = JSON.parse(localStorage.getItem("projects"));
+  projects.splice(toRemove, 1);
+  localStorage.setItem("projects", JSON.stringify(projects));
+  displayProjects();
+}
+
+function init() {
+  setTime();
+  setUpLocalStorage();
+  displayProjects();
+}
+
+init();
 formSubmitEl.on("click", handleFormSubmit);
