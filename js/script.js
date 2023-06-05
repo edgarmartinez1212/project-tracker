@@ -64,7 +64,7 @@ function displayProjects() {
     });
     rowEl.addClass("row");
     let removeBtn = $("<button>");
-    removeBtn.addClass("col button");
+    removeBtn.addClass("col btn btn-danger");
     removeBtn.text("Remove");
     removeBtn.attr("id", i);
     removeBtn.on("click", removeProject);

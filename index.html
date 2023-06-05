@@ -16,31 +16,33 @@
 <body>
 
     <!-- header area -->
-    <header class="p-5 text-center border-bottom border-5 header">
-        <h1>Project Tracker</h1>
-        <h2>Current Date: <span id="current-date"></span></h2>
-        <h2>Current Time: <span id="current-time"></span></h2>
+    <header class="p-5 text-center border-bottom border-5 header bg-primary">
+        <div class="text-white">
+            <h1>Project Tracker</h1>
+            <h2>Current Date: <span id="current-date"></span></h2>
+            <h2>Current Time: <span id="current-time"></span></h2>
+        </div>
     </header>
 
     <div class="container">
         <div class="column">
             <!-- instruction card -->
-            <div class="col-8 border border-5">
-                <div>Click on the Add Project button to add a new project! You can delete a project by clicking on the
+            <div class="col-8 offset-2 text-center border border-1 fw-bold">
+                <div>Click on the "Add Project" button to add a new project! You can delete a project by clicking on the
                     delete button.</div>
             </div>
 
             <!-- project info table -->
             <div class="col-12 col-md-12 col-lg-12 border border-5" id="project-container">
-                <div>Projects</div>
-                <div class="row">
+                <div class="fw-bold text-center border border-1">Projects</div>
+                <div class="row fw-bold">
                     <div class="col">Title</div>
                     <div class="col">Type</div>
                     <div class="col">Date Completed</div>
                     <div class="col">Description</div>
                     <div class="col"></div>
-                    <div id="project-table">
-                    </div>
+                </div>
+                <div id="project-table">
                 </div>
             </div>
         </div>
@@ -56,7 +58,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLabel">Project Tracker</h5>
+                        <h5 class="modal-title btn-primary" id="modalLabel">Project Tracker</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
