@@ -14,17 +14,8 @@ function setTime() {
   }, 1000);
 }
 
-// not functional
-function clearModal() {
-  projectNameEl.text("");
-  projectTypeEl.text("");
-  projectDateEl.text("");
-  projectDescEl.text("");
-}
-
 // FIX
-// look for a way to clear and hide modal
-// updates projects table without refreshing page
+// updates projejcts form by refreshing
 function handleFormSubmit(event) {
   let newProject = {
     name: projectNameEl.val(),
@@ -41,12 +32,14 @@ function handleFormSubmit(event) {
   location.reload();
 }
 
+// creates localstorage with key "projects"
 function setUpLocalStorage() {
   if (localStorage.getItem("projects") === null) {
     localStorage.setItem("projects", JSON.stringify([]));
   }
 }
 
+// displays projects on #project-table, adds remove button to each project
 function displayProjects() {
   let projectTableEl = $("#project-table");
   projectTableEl.children().remove();
@@ -83,6 +76,7 @@ function removeProject(event) {
   displayProjects();
 }
 
+// initializes app
 function init() {
   setTime();
   setUpLocalStorage();
